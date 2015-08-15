@@ -100,7 +100,7 @@ $(document).ready(function(){
   //call json
     var posts = tumblr_api_read.posts;
     //loop through posts
-    for (var i in posts) {
+    for (var i = 0; i < posts.length; i++) {
       $('#project-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[0] +'</a></li>');
       $('#installation-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[1]+ '</a></li>');
     }
