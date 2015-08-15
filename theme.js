@@ -107,9 +107,9 @@ $(document).ready(function(){
         postTags[posts[i].tags[1]] = true;
       }
     }
-    var postTagUrl = tumblr_api_read.tumblelog.name + '.tumblr.com/tagged/';
+    var postTagUrl = '/tagged/';
     for(var postTag in postTags) {
-      $('#installation-list').append('<li><a href="http://' + postTagUrl + encodeURIComponent(postTag) + '">' + postTag + '</a></li>');
+      $('#installation-list').append('<li><a href="' + postTagUrl + encodeURIComponent(postTag) + '">' + postTag + '</a></li>');
     }
 
 } else {
