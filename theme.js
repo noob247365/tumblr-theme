@@ -84,7 +84,7 @@
 
 var ct = new Date();
 if (document.location.hostname != 'www.tumblr.com') {
-	document.write("<script src='http://thanksseeya.tumblr.com/api/read/json?num=50?"+ct.getTime()+"'></script>");
+	document.write("<script src='http://"+document.location.hostname+"/api/read/json?num=50?"+ct.getTime()+"'></script>");
 }
 
 $(document).ready(function(){
@@ -99,12 +99,17 @@ $(document).ready(function(){
 	if (root != 'www.tumblr.com') {
   //call json
     var posts = tumblr_api_read.posts;
+    var postTags = {};
     //loop through posts
     for (var i = 0; i < posts.length; i++) {
       $('#project-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[0] +'</a></li>');
       if(posts[i].tags[1]) {
-        $('#installation-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[1]+ '</a></li>');
+        postTags[posts[i].tags[1]] = true;
       }
+    }
+    var postTagUrl = tumblr_api_read.tumblelog.name + '.tumblr.com/tagged/';
+    for(var postTag in postTags) {
+      $('#installation-list').append('<li><a href="http://' + postTagUrl + encodeURIComponent(postTag) + '">' + postTag + '</a></li>');
     }
 
 } else {
