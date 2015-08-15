@@ -102,7 +102,9 @@ $(document).ready(function(){
     //loop through posts
     for (var i = 0; i < posts.length; i++) {
       $('#project-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[0] +'</a></li>');
-      $('#installation-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[1]+ '</a></li>');
+      if(posts[i].tags[1]) {
+      	$('#installation-list').append('<li><a href=' + posts[i].url + '>' + posts[i].tags[1]+ '</a></li>');
+      }
     }
 
 } else {
